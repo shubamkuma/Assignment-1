@@ -11,35 +11,47 @@ class Pet
     public Pet(string name)
     {
         Name = name;
-        Hunger = 50;
-        Happiness = 50;
-        Health = 50;
+        Hunger = 5; // Initial value on a scale of 1 to 10
+        Happiness = 5; // Initial value on a scale of 1 to 10
+        Health = 5; // Initial value on a scale of 1 to 10
     }
 
-    public void Feed()
+    public void DisplayStats()
     {
-        Hunger -= 20;
-        if (Hunger < 0) Hunger = 0;
-        Health += 10;
-        Console.WriteLine("You fed " + Name + ". Hunger decreased, and health increased.");
+        Console.WriteLine("Pet's Stats - Name: " + Name);
+        Console.WriteLine("Hunger: " + Hunger);
+        Console.WriteLine("Happiness: " + Happiness);
+        Console.WriteLine("Health: " + Health);
     }
 
-    public void Play()
+    public void CheckStatus()
     {
-        Happiness += 20;
-        if (Happiness > 100) Happiness = 100;
-        Hunger += 10;
-        if (Hunger > 100) Hunger = 100;
-        Console.WriteLine("You played with " + Name + ". Happiness increased, but hunger also increased.");
-    }
+        if (Hunger <= 2)
+        {
+            Console.WriteLine("Warning: Pet's hunger is critically low!");
+        }
+        else if (Hunger >= 8)
+        {
+            Console.WriteLine("Warning: Pet's hunger is critically high!");
+        }
 
-    public void Rest()
-    {
-        Health += 20;
-        if (Health > 100) Health = 100;
-        Happiness -= 10;
-        if (Happiness < 0) Happiness = 0;
-        Console.WriteLine("You let " + Name + " rest. Health improved, but happiness decreased slightly.");
+        if (Happiness <= 2)
+        {
+            Console.WriteLine("Warning: Pet's happiness is critically low!");
+        }
+        else if (Happiness >= 8)
+        {
+            Console.WriteLine("Warning: Pet's happiness is critically high!");
+        }
+
+        if (Health <= 2)
+        {
+            Console.WriteLine("Warning: Pet's health is critically low!");
+        }
+        else if (Health >= 8)
+        {
+            Console.WriteLine("Warning: Pet's health is critically high!");
+        }
     }
 }
 
@@ -48,11 +60,10 @@ class Program
     static void Main()
     {
         Pet pet = new Pet("Fido");
-        Console.WriteLine("Welcome to the virtual pet simulator! Your pet's name is " + pet.Name);
 
-        // Example of caring for the pet
-        pet.Feed();
-        pet.Play();
-        pet.Rest();
+        pet.DisplayStats();
+
+        // Example of checking the pet's status
+        pet.CheckStatus();
     }
 }
