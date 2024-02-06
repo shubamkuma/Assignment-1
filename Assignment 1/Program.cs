@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Threading;
 
 class Pet
 {
@@ -16,41 +17,14 @@ class Pet
         Health = 5; // Initial value on a scale of 1 to 10
     }
 
-    public void DisplayStats()
+    public void TimePassing()
     {
-        Console.WriteLine("Pet's Stats - Name: " + Name);
-        Console.WriteLine("Hunger: " + Hunger);
-        Console.WriteLine("Happiness: " + Happiness);
-        Console.WriteLine("Health: " + Health);
-    }
-
-    public void CheckStatus()
-    {
-        if (Hunger <= 2)
+        // Simulate the passage of time
+        for (int i = 0; i < 24; i++) // Simulate 24 hours
         {
-            Console.WriteLine("Warning: Pet's hunger is critically low!");
-        }
-        else if (Hunger >= 8)
-        {
-            Console.WriteLine("Warning: Pet's hunger is critically high!");
-        }
-
-        if (Happiness <= 2)
-        {
-            Console.WriteLine("Warning: Pet's happiness is critically low!");
-        }
-        else if (Happiness >= 8)
-        {
-            Console.WriteLine("Warning: Pet's happiness is critically high!");
-        }
-
-        if (Health <= 2)
-        {
-            Console.WriteLine("Warning: Pet's health is critically low!");
-        }
-        else if (Health >= 8)
-        {
-            Console.WriteLine("Warning: Pet's health is critically high!");
+            Thread.Sleep(1000); // Simulate an hour
+            Hunger++; // Hunger increases over time
+            Happiness--; // Happiness decreases slightly
         }
     }
 }
@@ -61,9 +35,10 @@ class Program
     {
         Pet pet = new Pet("Fido");
 
-        pet.DisplayStats();
+        pet.TimePassing(); // Simulate the passage of time
 
-        // Example of checking the pet's status
-        pet.CheckStatus();
+        Console.WriteLine("After 24 hours:");
+        Console.WriteLine("Hunger: " + pet.Hunger);
+        Console.WriteLine("Happiness: " + pet.Happiness);
     }
 }
