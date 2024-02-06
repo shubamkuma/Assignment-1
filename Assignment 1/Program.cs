@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-class VPet
+class Pet
 {
     static void Main()
     {
