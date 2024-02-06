@@ -1,44 +1,31 @@
 ﻿
 using System;
-using System.Threading;
 
-class Pet
-{
-    public string Name { get; set; }
-    public int Hunger { get; set; }
-    public int Happiness { get; set; }
-    public int Health { get; set; }
-
-    public Pet(string name)
-    {
-        Name = name;
-        Hunger = 5; // Initial value on a scale of 1 to 10
-        Happiness = 5; // Initial value on a scale of 1 to 10
-        Health = 5; // Initial value on a scale of 1 to 10
-    }
-
-    public void TimePassing()
-    {
-        // Simulate the passage of time
-        for (int i = 0; i < 24; i++) // Simulate 24 hours
-        {
-            Thread.Sleep(1000); // Simulate an hour
-            Hunger++; // Hunger increases over time
-            Happiness--; // Happiness decreases slightly
-        }
-    }
-}
-
-class Program
+class VPet
 {
     static void Main()
     {
-        Pet pet = new Pet("Fido");
+        // Pet Creation
+        Console.WriteLine("Welcome to the Virtual Pet Simulator!");
+        Console.WriteLine("Choose a pet type (e.g., cat, dog, rabbit): ");
+        string petType = Console.ReadLine();
+        Console.WriteLine("Give your pet a name: ");
+        string petName = Console.ReadLine();
+        Console.WriteLine("You have created a " + petType + " named " + petName);
 
-        pet.TimePassing(); // Simulate the passage of time
+        // Pet Care Actions
+        // Implement actions such as Feeding, Playing, and Resting
+        // Include logic to track the pet's hunger, happiness, and health levels
+        // Display messages or events based on the pet's status
 
-        Console.WriteLine("After 24 hours:");
-        Console.WriteLine("Hunger: " + pet.Hunger);
-        Console.WriteLine("Happiness: " + pet.Happiness);
+        // Example:
+        // if (hungerLevel > 7)
+        // {
+        //     Console.WriteLine(petName + " is too hungry to play!");
+        // }
+
+        // User Interface and Experience
+        // Develop a simple, clear, and user-friendly console interface
+        // Include instructions for the user on how to interact with the application
     }
 }
